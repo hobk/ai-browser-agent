@@ -8,6 +8,8 @@
 [![Vite](https://img.shields.io/badge/Vite-5.x-646cff?style=flat-square&logo=vite)](https://vitejs.dev/)
 [![TailwindCSS](https://img.shields.io/badge/Tailwind-3.x-38bdf8?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
 [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
+![Storage](https://img.shields.io/badge/storage-EdgeKV-cyan.svg)
+
 
 [English](README.en.md) | 简体中文
 
@@ -204,3 +206,8 @@ npm run build
 Made with ❤️ by [hobk](https://github.com/hobk)
 
 </div>
+
+
+
+> 本项目由阿里云ESA提供加速、计算和保护 ![img](https://img.alicdn.com/imgextra/i3/O1CN01H1UU3i1Cti9lYtFrs_!!6000000000139-2-tps-7534-844.png)
+

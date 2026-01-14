@@ -375,7 +375,7 @@ const startSession = async () => {
       if (res?.result) {
         addMessage(`执行完成：${res.result}`, 'assistant')
       } else {
-        addMessage('✅ 演示指令执行完成', 'assistant')
+        addMessage('✅ 演示指令执行完成，您可以在下方输入操作指令啦，快来试试吧', 'assistant')
       }
     } catch (e) {
       addMessage(`❌ 演示指令执行失败: ${e.message}`, 'assistant', 'error')
@@ -641,14 +641,14 @@ onMounted(async () => {
   // 检查是否已登录系统，如果未登录则自动登录
   const token = authToken.get()
   if (!token) {
-    addMessage('检测到未登录，正在自动登录系统...', 'assistant')
+    addMessage('检测到初次访问，正在为您初始化系统...', 'assistant')
     const loginSuccess = await autoSystemLogin()
     if (!loginSuccess) {
       addMessage('❌ 自动登录失败，请手动登录', 'assistant', 'error')
       router.push({ name: 'Login' })
       return
     }
-    addMessage('✅ 系统登录成功', 'assistant')
+    addMessage('环境初始化成功，正在启动浏览器会话...', 'assistant')
   }
   
   // 页面加载时自动启动会话

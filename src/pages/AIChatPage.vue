@@ -357,7 +357,7 @@ const startSession = async () => {
 
     // 默认打开百度
     await navigateToUrl(DEFAULT_URL)
-    addMessage('✅ 已打开默认页面，现在你可以通过对话来操作浏览器。', 'assistant')
+    addMessage('✅ 已打开默认页面，现在为您演示当前页面的操作，请等待演示完毕后可自行操作', 'assistant')
     
     // 发送演示消息
     const demoMessage = '【演示】搜索阿里云并进入官网，在官网搜索ESA找到产品介绍'
@@ -375,7 +375,7 @@ const startSession = async () => {
       if (res?.result) {
         addMessage(`执行完成：${res.result}`, 'assistant')
       } else {
-        addMessage('✅ 演示指令执行完成，您可以在下方输入操作指令啦，快来试试吧', 'assistant')
+        addMessage('✅ 演示指令执行完成，您可以在下方输入操作指令，快来试试吧', 'assistant')
       }
     } catch (e) {
       addMessage(`❌ 演示指令执行失败: ${e.message}`, 'assistant', 'error')
@@ -649,6 +649,8 @@ onMounted(async () => {
       return
     }
     addMessage('环境初始化成功，正在启动浏览器会话...', 'assistant')
+  }else{
+    addMessage('正在启动浏览器，请稍后...', 'assistant')
   }
   
   // 页面加载时自动启动会话

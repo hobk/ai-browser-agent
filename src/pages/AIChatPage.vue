@@ -240,11 +240,11 @@ const SYSTEM_LOGIN_EMAIL = 'hu.bo2@trs.com.cn'
 const SYSTEM_LOGIN_PASSWORD = '@pa123sw0rd1'
 
 // 默认打开的URL
-const DEFAULT_URL = 'https://www.baidu.com'
+const DEFAULT_URL = 'https://www.aliyun.com'
 
 // 快捷指令
 const quickActions = [
-  { label: '打开百度', command: 'https://www.baidu.com' },
+  { label: '阿里云官网', command: 'https://www.aliyun.com' },
   { label: '截图', type: 'screenshot' },
   { label: '返回顶部', command: '滚动到页面顶部' },
   { label: '返回底部', command: '滚动到页面底部' },
@@ -360,7 +360,7 @@ const startSession = async () => {
     addMessage('✅ 已打开默认页面，现在为您演示当前页面的操作，请等待演示完毕后可自行操作', 'assistant')
     
     // 发送演示消息
-    const demoMessage = '【演示】搜索阿里云并进入官网，在官网搜索ESA找到产品介绍'
+    const demoMessage = '【演示】搜索esa产品，然后找到定价'
     await new Promise(resolve => setTimeout(resolve, 500))
     addMessage(demoMessage, 'user')
     
@@ -388,6 +388,16 @@ const startSession = async () => {
       })
     }
   } catch (e) {
+    if(e.meesage.indexOf('401')!==-1){
+      addMessage(`授权过期，正在为您重新初始化系统...`,'assistant')
+      // 重新登录
+      authToken.clear()
+      // 刷新页面
+      setTimeout(() => {
+        window.location.reload()
+      }, 500)
+      return
+    }
     addMessage(`启动失败: ${e.message}`, 'assistant', 'error')
     toast.error('启动失败: ' + e.message)
   } finally {
@@ -466,7 +476,7 @@ const visitInputUrl = async () => {
 
   // 校验URL合法性
   if (!isValidUrl(url)) {
-    toast.error('请输入有效的网址，例如：https://www.baidu.com')
+    toast.error('请输入有效的网址，例如：https://www.aliyun.com')
     return
   }
 
